@@ -1,0 +1,1000 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Inola ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe6ef, #fff5f8, #ffd6e5);
+            min-height: 100vh;
+            color: #5a2638;
+            overflow-x: hidden;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            animation: floatHeart linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .page {
+            min-height: 100vh;
+            display: none;
+            position: relative;
+            z-index: 2;
+            padding: 30px 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(145, 53, 86, 0.15);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 7vw, 4rem);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: clamp(1.7rem, 5vw, 2.7rem);
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .small-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.25s ease;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff4f81, #ff1f63);
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 31, 99, 0.25);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #ff4778;
+            border: 2px solid #ff9db8;
+        }
+
+        /* =========================
+           OPENING
+        ========================= */
+
+        .big-heart {
+            font-size: 90px;
+            animation: heartbeat 1.4s infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.15);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.12);
+            }
+        }
+
+        .name {
+            color: #ff326c;
+            font-weight: 800;
+        }
+
+        /* =========================
+           GAME
+        ========================= */
+
+        .question {
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .game-area {
+            position: relative;
+            height: 180px;
+            margin-top: 20px;
+        }
+
+        #noBtn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(20px);
+        }
+
+        .yes-btn {
+            position: relative;
+            z-index: 5;
+        }
+
+        .game-message {
+            min-height: 35px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #ff3971;
+        }
+
+        /* =========================
+           LOVE MESSAGE
+        ========================= */
+
+        .love-title {
+            color: #ff2f6d;
+            animation: appear 1s ease;
+        }
+
+        .love-big {
+            font-size: clamp(2.3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #ff2865;
+            margin: 25px 0;
+            animation: pop 1s ease;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           LOVE LETTER
+        ========================= */
+
+        .letter {
+            text-align: left;
+            background: #fffafc;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 25px;
+            box-shadow: inset 0 0 30px rgba(255, 100, 150, 0.05);
+        }
+
+        .letter-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ff3971;
+            margin-bottom: 25px;
+        }
+
+        .letter p {
+            margin-bottom: 18px;
+        }
+
+        .signature {
+            text-align: right;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 30px;
+        }
+
+        /* =========================
+           PHOTO
+        ========================= */
+
+        .photo-frame {
+            margin: 25px auto;
+            max-width: 430px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(120, 40, 70, 0.2);
+        }
+
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* =========================
+           FINAL
+        ========================= */
+
+        .final-heart {
+            font-size: 100px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        .final-text {
+            font-size: clamp(1.2rem, 4vw, 1.7rem);
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        /* =========================
+           MUSIC
+        ========================= */
+
+        .music-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #ff3971;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            box-shadow: 0 10px 25px rgba(255, 57, 113, 0.3);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 30px 20px;
+                border-radius: 25px;
+            }
+
+            .big-heart {
+                font-size: 70px;
+            }
+
+            .game-area {
+                height: 200px;
+            }
+
+            .letter {
+                padding: 22px;
+            }
+
+            .btn {
+                padding: 13px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING HEARTS -->
+    <div class="hearts" id="hearts"></div>
+
+
+    <!-- =========================
+         PAGE 1
+    ========================== -->
+
+    <section class="page active" id="page1">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div class="big-heart">💗</div>
+
+                <p class="small-text">
+                    Ada sesuatu yang ingin aku kasih ke kamu...
+                </p>
+
+                <h1>
+                    Untuk <span class="name">Inola</span> ❤️
+                </h1>
+
+                <p>
+                    Tapi sebelum itu...
+                    kamu harus melewati satu pertanyaan penting.
+                </p>
+
+                <br>
+
+                <button class="btn btn-primary" onclick="nextPage(2)">
+                    Buka 💌
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAGE 2 - GAME
+    ========================== -->
+
+    <section class="page" id="page2">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div style="font-size:60px;">🥺</div>
+
+                <p class="small-text">
+                    Pertanyaan ini harus dijawab dengan jujur...
+                </p>
+
+                <div class="question">
+                    Inola sayang aku gak? 🥺
+                </div>
+
+                <div class="game-area">
+
+                    <button
+                        class="btn btn-primary yes-btn"
+                        onclick="yesAnswer()">
+                        IYA, SAYANG ❤️
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        id="noBtn"
+                        onmouseover="moveNoButton()"
+                        onclick="moveNoButton()">
+                        NGGAK 😏
+                    </button>
+
+                </div>
+
+                <div class="game-message" id="gameMessage"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAGE 3
+    ========================== -->
+
+    <section class="page" id="page3">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div style="font-size:70px;">😭❤️</div>
+
+                <h2 class="love-title">
+                    AKU TAU!
+                </h2>
+
+                <div class="love-big">
+                    Aku cinta banget sama kamuuu ❤️
+                </div>
+
+                <p>
+                    Nah, sekarang jangan senyum-senyum sendiri ya...
+                    😭
+                </p>
+
+                <br>
+
+                <button class="btn btn-primary" onclick="nextPage(4)">
+                    Ada surat buat kamu 💌
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAGE 4 - LOVE LETTER
+    ========================== -->
+
+    <section class="page" id="page4">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div style="font-size:60px;">💌</div>
+
+                <h2>
+                    Love Letter
+                </h2>
+
+                <div class="letter">
+
+                    <div class="letter-title">
+                        Untuk Inola ❤️
+                    </div>
+
+                    <p>
+                        Hai sayang...
+                    </p>
+
+                    <p>
+                        Aku sebenarnya nggak terlalu jago merangkai
+                        kata-kata. Kadang apa yang aku rasakan jauh
+                        lebih banyak daripada apa yang bisa aku ucapkan.
+                    </p>
+
+                    <p>
+                        Tapi ada satu hal yang ingin aku pastikan
+                        kamu tahu.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Aku sayang banget sama kamu.
+                        </strong>
+                    </p>
+
+                    <p>
+                        Terima kasih karena sudah hadir di hidup aku.
+                        Terima kasih sudah menjadi seseorang yang bisa
+                        membuat hari-hari biasa terasa lebih spesial.
+                    </p>
+
+                    <p>
+                        Aku mungkin nggak selalu sempurna.
+                        Aku mungkin kadang ngeselin, kadang bikin kamu
+                        kesel, dan kadang juga nggak tahu harus ngomong
+                        apa.
+                    </p>
+
+                    <p>
+                        Tapi perasaan aku ke kamu itu nyata.
+                    </p>
+
+                    <p>
+                        Kalau suatu hari kamu lupa...
+                        buka website ini lagi.
+                    </p>
+
+                    <p>
+                        Karena jawabannya akan selalu sama:
+                    </p>
+
+                    <p style="text-align:center; font-size:1.4rem;">
+                        <strong>
+                            Aku cinta banget sama kamuuu. ❤️
+                        </strong>
+                    </p>
+
+                    <div class="signature">
+                        — Octa 💗
+                    </div>
+
+                </div>
+
+                <br>
+
+                <button class="btn btn-primary" onclick="nextPage(5)">
+                    Masih ada satu lagi 👀
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAGE 5 - PHOTO
+    ========================== -->
+
+    <section class="page" id="page5">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div style="font-size:60px;">🥰</div>
+
+                <h2>
+                    Satu hal terakhir...
+                </h2>
+
+                <p>
+                    Ini salah satu hal yang paling aku suka:
+                    <br>
+                    <strong>kita. ❤️</strong>
+                </p>
+
+                <!--
+                    GANTI "foto-kita.jpg"
+                    dengan nama foto kalian.
+                -->
+
+                <div class="photo-frame">
+
+                    <img
+                        src="foto-kita.jpg"
+                        alt="Foto kita"
+                        onerror="this.style.display='none';"
+                    >
+
+                </div>
+
+                <p>
+                    Semoga nanti ada lebih banyak cerita,
+                    lebih banyak tawa,
+                    dan lebih banyak foto seperti ini.
+                </p>
+
+                <button class="btn btn-primary" onclick="nextPage(6)">
+                    Terakhir ❤️
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PAGE 6 - FINAL
+    ========================== -->
+
+    <section class="page" id="page6">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div class="final-heart">
+                    ❤️
+                </div>
+
+                <h1>
+                    Inola
+                </h1>
+
+                <p class="final-text">
+                    Aku cinta banget sama kamu.
+                </p>
+
+                <p>
+                    Jangan lupa ya...
+                    <br><br>
+                    Kamu itu disayang.
+                    <br>
+                    Kamu itu berharga.
+                    <br>
+                    Dan kamu punya satu orang yang
+                    cintanya banyak banget buat kamu.
+                </p>
+
+                <br>
+
+                <div style="font-size:2rem;">
+                    🫶🏻 💗 🥰 💕
+                </div>
+
+                <br>
+
+                <p class="small-text">
+                    Made with love by Octa
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MUSIC BUTTON -->
+
+    <button
+        class="music-btn"
+        onclick="toggleMusic()"
+        id="musicButton">
+        🎵
+    </button>
+
+    <!--
+        OPSIONAL:
+        Masukkan file musik bernama "lagu.mp3"
+        ke folder yang sama dengan index.html.
+    -->
+
+    <audio id="music" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+
+        /* =========================
+           PAGE SYSTEM
+        ========================== */
+
+        function nextPage(pageNumber) {
+
+            document.querySelectorAll(".page").forEach(page => {
+                page.classList.remove("active");
+            });
+
+            document
+                .getElementById("page" + pageNumber)
+                .classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+            createHeartBurst();
+        }
+
+
+        /* =========================
+           YES ANSWER
+        ========================== */
+
+        function yesAnswer() {
+
+            const message =
+                document.getElementById("gameMessage");
+
+            message.innerHTML =
+                "HEHEHE AKU TAU KAMU SAYANG AKU 😭❤️";
+
+            setTimeout(() => {
+
+                nextPage(3);
+
+            }, 1200);
+        }
+
+
+        /* =========================
+           NO BUTTON
+        ========================== */
+
+        let noAttempts = 0;
+
+        function moveNoButton() {
+
+            const button =
+                document.getElementById("noBtn");
+
+            const area =
+                document.querySelector(".game-area");
+
+            noAttempts++;
+
+            const maxX =
+                Math.max(20, area.clientWidth - button.offsetWidth - 20);
+
+            const maxY =
+                Math.max(20, area.clientHeight - button.offsetHeight - 20);
+
+            const randomX =
+                Math.floor(Math.random() * maxX);
+
+            const randomY =
+                Math.floor(Math.random() * maxY);
+
+            button.style.transform = "none";
+
+            button.style.left =
+                randomX + "px";
+
+            button.style.top =
+                randomY + "px";
+
+
+            const messages = [
+                "Yakin gak sayang? 😭",
+                "Jangan bohong dong 🥺",
+                "Coba lagi...",
+                "Inola tega? 😭",
+                "Tombolnya kok kabur ya? 😂",
+                "Aku tahu kamu sayang ❤️",
+                "Udah klik IYA aja 😭",
+                "Masih mau bilang NGGAK?! 😭"
+            ];
+
+            document.getElementById("gameMessage")
+                .innerText =
+                messages[
+                    Math.min(
+                        noAttempts - 1,
+                        messages.length - 1
+                    )
+                ];
+
+
+            /* Setelah beberapa kali,
+               tombol NGGAK berubah menjadi IYA */
+
+            if (noAttempts >= 6) {
+
+                button.innerText =
+                    "IYA DEH ❤️";
+
+                button.classList.remove("btn-secondary");
+                button.classList.add("btn-primary");
+
+                button.onmouseover = null;
+                button.onclick = yesAnswer;
+            }
+        }
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "heart";
+
+            const hearts = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💓",
+                "💘",
+                "🥰"
+            ];
+
+            heart.innerText =
+                hearts[
+                    Math.floor(
+                        Math.random() * hearts.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 7) + "s";
+
+            document
+                .getElementById("hearts")
+                .appendChild(heart);
+
+
+            setTimeout(() => {
+                heart.remove();
+            }, 13000);
+        }
+
+
+        setInterval(createHeart, 700);
+
+
+        /* =========================
+           HEART BURST
+        ========================== */
+
+        function createHeartBurst() {
+
+            for (let i = 0; i < 15; i++) {
+
+                setTimeout(() => {
+
+                    const heart =
+                        document.createElement("div");
+
+                    heart.innerText = "❤️";
+
+                    heart.style.position = "fixed";
+                    heart.style.left =
+                        (40 + Math.random() * 20) + "%";
+
+                    heart.style.top =
+                        (40 + Math.random() * 20) + "%";
+
+                    heart.style.fontSize =
+                        "25px";
+
+                    heart.style.zIndex = "999";
+
+                    heart.style.pointerEvents =
+                        "none";
+
+                    heart.style.transition =
+                        "all 1s ease";
+
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+
+                        heart.style.transform =
+                            `translate(
+                                ${(Math.random() - .5) * 400}px,
+                                ${(Math.random() - .5) * 400}px
+                            ) scale(1.5)`;
+
+                        heart.style.opacity = "0";
+
+                    }, 50);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 1100);
+
+                }, i * 60);
+            }
+        }
+
+
+        /* =========================
+           MUSIC
+        ========================== */
+
+        let musicPlaying = false;
+
+        function toggleMusic() {
+
+            const music =
+                document.getElementById("music");
+
+            const button =
+                document.getElementById("musicButton");
+
+            if (!musicPlaying) {
+
+                music.play()
+                    .then(() => {
+
+                        musicPlaying = true;
+                        button.innerText = "🔊";
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "Tambahkan file lagu.mp3 ke folder website dulu ya ❤️"
+                        );
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                musicPlaying = false;
+
+                button.innerText = "🎵";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+```
